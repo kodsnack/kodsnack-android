@@ -129,6 +129,5 @@ public class ListenActivity extends Activity implements PlayerService.PlayerCall
     @Override
     public void updateTitle(String title) {
         updateUI(title);
-        showStatus(R.string.live);
     }
 }
