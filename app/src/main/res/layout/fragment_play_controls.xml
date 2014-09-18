@@ -1,0 +1,34 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:orientation="horizontal"
+    android:background="@color/dark_background"
+    android:layout_height="@dimen/default_height"
+    tools:context="me.erj.kodsnack.PlayControlFragment">
+
+    <ImageView
+        android:id="@+id/small_logo"
+        android:contentDescription="@string/stream_image_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:src="@drawable/kodsnack" />
+
+    <TextView
+        android:id="@+id/stream_title"
+        android:gravity="center"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:textSize="@dimen/stream_title_size" />
+
+    <me.erj.kodsnack.ui.PlayPauseButton
+        android:id="@+id/play_pause_button"
+        android:contentDescription="@string/play_pause_button_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:pauseDrawable="@android:drawable/ic_media_pause"
+        app:playDrawable="@android:drawable/ic_media_play"
+        app:tint="@color/primary_foreground" />
+
+</LinearLayout>

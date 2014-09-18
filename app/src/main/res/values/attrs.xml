@@ -1,0 +1,7 @@
+<resources>
+    <declare-styleable name="PlayPauseButton">
+        <attr name="tint" format="color" />
+        <attr name="playDrawable" format="reference" />
+        <attr name="pauseDrawable" format="reference" />
+    </declare-styleable>
+</resources>

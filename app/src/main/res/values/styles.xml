@@ -1,0 +1,21 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="Kodsnack" parent="android:Theme.Holo">
+        <!-- Set colors for the app. -->
+        <item name="android:textColor">@color/primary_text</item>
+
+        <!-- Set the style of the ActionBar. -->
+        <item name="android:actionBarStyle">@style/Kodsnack.ActionBar</item>
+        <item name="android:background">@null</item>
+    </style>
+
+    <style name="Kodsnack.ActionBar" parent="android:style/Widget.Holo.Light.ActionBar">
+        <!-- Hide the icon on the ActionBar. -->
+        <!--<item name="android:icon">@android:color/transparent</item>-->
+
+        <!-- Make sure the ActionBar has a suitable title. -->
+        <item name="android:displayOptions">showCustom</item>
+        <item name="android:customNavigationLayout">@layout/actionbar_title</item>
+    </style>
+</resources>

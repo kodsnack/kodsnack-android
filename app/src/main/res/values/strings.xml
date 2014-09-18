@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Kodsnack for Android</string>
+    <string name="kodsnack">Kodsnack Live</string>
+    <string name="offline">Kodsnack offline</string>
+    <string name="no_show">Ingen sändning för tillfället.</string>
+    <string name="live">Live just nu!</string>
+
+    <!-- URL for the JSON status feed. -->
+    <string name="kodsnack_status_url">http://live.kodsnack.se/feed.json</string>
+
+    <!-- Image descriptions. -->
+    <string name="stream_image_desc">Logotype of current stream</string>
+    <string name="large_logo">Logotype of Kodsnack or Appsnack.</string>
+    <string name="play_pause_button_desc">Play/pause button</string>
+    <string name="notification_playpause">The notification\'s play/pause button.</string>
+    <string name="notification_kill">The notification\'s shutdown button.</string>
+</resources>
