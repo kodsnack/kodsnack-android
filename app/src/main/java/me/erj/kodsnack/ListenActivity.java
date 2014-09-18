@@ -60,6 +60,7 @@ public class ListenActivity extends Activity implements PlayerService.PlayerCall
     protected void onDestroy() {
         super.onDestroy();
         if (playerService != null) {
+            playerService.unregisterPlayerCallback(this);
             unbindService(playerConnection);
             playerService = null;
         }
