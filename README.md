@@ -1,4 +1,7 @@
 # Kodsnack för Android
+
+![](screenshot.png)
+
 En enkel Android-app för att strömma Kodsnacks livesändningar.
 
 Kräver följande behörigheter:
