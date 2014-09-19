@@ -1,4 +1,4 @@
-package me.erj.kodsnack;
+package se.kodsnack;
 
 import android.app.Activity;
 import android.content.ComponentName;

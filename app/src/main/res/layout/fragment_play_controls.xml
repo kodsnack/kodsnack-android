@@ -5,7 +5,7 @@
     android:orientation="horizontal"
     android:background="@color/dark_background"
     android:layout_height="@dimen/default_height"
-    tools:context="me.erj.kodsnack.PlayControlFragment">
+    tools:context="se.kodsnack.PlayControlFragment">
 
     <ImageView
         android:id="@+id/small_logo"
@@ -22,7 +22,7 @@
         android:layout_width="0dp"
         android:textSize="@dimen/stream_title_size" />
 
-    <me.erj.kodsnack.ui.PlayPauseButton
+    <se.kodsnack.ui.PlayPauseButton
         android:id="@+id/play_pause_button"
         android:contentDescription="@string/play_pause_button_desc"
         android:layout_width="wrap_content"

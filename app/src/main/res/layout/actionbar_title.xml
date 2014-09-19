@@ -7,7 +7,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin">
 
-    <me.erj.kodsnack.ui.FontTextView
+    <se.kodsnack.ui.FontTextView
         android:id="@+id/actionbar_title"
         android:textSize="@dimen/title_size"
         android:textColor="@color/primary_foreground"
@@ -16,5 +16,5 @@
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="me.erj.kodsnack.ui.FontTextView" />
+        tools:context="se.kodsnack.ui.FontTextView" />
 </FrameLayout>

@@ -1,4 +1,4 @@
-package me.erj.kodsnack;
+package se.kodsnack;
 
 import android.app.Activity;
 import android.content.ComponentName;
@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import me.erj.kodsnack.ui.PlayPauseButton;
+import se.kodsnack.ui.PlayPauseButton;
 
 /**
  * A {@link Fragment} subclass that handles the play control at the bottom

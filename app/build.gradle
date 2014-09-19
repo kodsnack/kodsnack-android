@@ -5,7 +5,7 @@ android {
     buildToolsVersion "20.0.0"
 
     defaultConfig {
-        applicationId "me.erj.kodsnack"
+        applicationId "se.kodsnack"
         minSdkVersion 16
         targetSdkVersion 20
         versionCode 1

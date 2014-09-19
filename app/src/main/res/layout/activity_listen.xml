@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_width="wrap_content" />
 
-    <me.erj.kodsnack.ui.FontTextView
+    <se.kodsnack.ui.FontTextView
         android:id="@+id/offline_text"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
@@ -36,11 +36,11 @@
         android:textStyle="normal"
         android:text="@string/offline"
         android:visibility="gone"
-        tools:context="me.erj.kodsnack.ui.FontTextView" />
+        tools:context="se.kodsnack.ui.FontTextView" />
 
     <fragment
         android:id="@+id/playcontrolsfragment"
-        android:name="me.erj.kodsnack.PlayControlFragment"
+        android:name="se.kodsnack.PlayControlFragment"
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

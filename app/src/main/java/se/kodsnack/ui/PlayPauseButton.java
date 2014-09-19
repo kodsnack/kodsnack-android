@@ -1,4 +1,4 @@
-package me.erj.kodsnack.ui;
+package se.kodsnack.ui;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -10,7 +10,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageButton;
 
-import me.erj.kodsnack.R;
+import se.kodsnack.R;
 
 public class PlayPauseButton extends ImageButton {
     private boolean         isPlaying;      // Keeps track of the button's state.

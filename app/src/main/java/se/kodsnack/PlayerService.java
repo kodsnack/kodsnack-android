@@ -1,4 +1,4 @@
-package me.erj.kodsnack;
+package se.kodsnack;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -41,8 +41,8 @@ public class PlayerService extends Service implements MediaPlayer.OnPreparedList
     private static final int NOTIFICATION_ID = 0xbada55;
 
     // Actions when service is invoked from the notification.
-    private static final String ACTION_STOP = "me.erj.kodsnack.STOP";
-    private static final String ACTION_TOGGLE_PLAYING = "me.erj.kodsnack.TOGGLE_PLAYING";
+    private static final String ACTION_STOP = "se.kodsnack.STOP";
+    private static final String ACTION_TOGGLE_PLAYING = "se.kodsnack.TOGGLE_PLAYING";
 
     private MediaPlayer          mediaPlayer;         // MediaPlayer that plays the live stream.
     private boolean              isRunning;           // Whether this service is running or not.

@@ -1,4 +1,4 @@
-package me.erj.kodsnack.ui;
+package se.kodsnack.ui;
 
 import android.content.Context;
 import android.graphics.Typeface;
