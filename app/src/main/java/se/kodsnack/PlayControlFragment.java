@@ -8,11 +8,15 @@ import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.os.IBinder;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import se.kodsnack.ui.PlayPauseButton;
 
@@ -86,6 +90,14 @@ public class PlayControlFragment extends Fragment implements PlayerService.Playe
         }
     }
 
+    public void updateUI(String title) {
+        titleText.setText(title);
+        // Replace logo with appsnack's if title says so.
+        title = title.toLowerCase();
+        int res = title.contains("appsnack") ? R.drawable.appsnack : R.drawable.kodsnack;
+        logo.setImageResource(res);
+    }
+
     /* Callbacks from player service. */
 
     @Override
@@ -123,12 +135,22 @@ public class PlayControlFragment extends Fragment implements PlayerService.Playe
     }
 
     @Override
-    public void updateTitle(String title) {
-        titleText.setText(title);
-        // Replace logo with appsnack's if title says so.
-        title = title.toLowerCase();
-        int res = title.contains("appsnack") ? R.drawable.appsnack : R.drawable.kodsnack;
-        logo.setImageResource(res);
+    public void onJsonInfo(JSONObject info) {
+        try {
+            JSONObject icestats = info.getJSONObject("icestats");
+            if (icestats.has("source")) {
+                JSONObject source = icestats.getJSONObject("source");
+
+                // Try to find a title or fall back to the server name as title.
+                String title = source.has("title") ? source.getString("title")
+                                                   : source.getString("server_name");
+
+                // Update UI (replacing logo with appsnack's if title says so).
+                updateUI(title);
+            }
+        } catch (JSONException e) {
+            Log.w(TAG, e.toString());
+        }
     }
 
     @Override

@@ -13,6 +13,9 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class ListenActivity extends Activity implements PlayerService.PlayerCallback {
     /* Logger tag. */
     private static final String TAG = ListenActivity.class.getSimpleName();
@@ -21,6 +24,7 @@ public class ListenActivity extends Activity implements PlayerService.PlayerCall
     private TextView        statusText;     // Status text in the UI.
     private ImageView       imageLogo;      // The big logo in the UI.
     private PlayerService   playerService;  // The service actually playing the stream.
+    private int             numListeners;   // The number of listeners to the stream.
 
     /**
      * The connection to the PlayerService.
@@ -41,6 +45,8 @@ public class ListenActivity extends Activity implements PlayerService.PlayerCall
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        numListeners = -1;
 
         // Start PlayerService ...
         final Intent i = new Intent(this, PlayerService.class);
@@ -69,12 +75,12 @@ public class ListenActivity extends Activity implements PlayerService.PlayerCall
     /**
      * Hide progress bar and show status text when there is no stream.
      *
-     * @param textId The resource id of the text to show.
+     * @param text The status text to show.
      */
-    private void showStatus(int textId) {
+    private void showStatus(String text) {
         progressBar.setVisibility(View.GONE);
         statusText.setVisibility(View.VISIBLE);
-        statusText.setText(textId);
+        statusText.setText(text);
     }
 
     private void showProgress() {
@@ -82,17 +88,12 @@ public class ListenActivity extends Activity implements PlayerService.PlayerCall
         statusText.setVisibility(View.GONE);
     }
 
-    /**
-     * Updates the large image logo in the activity based on the title.
-     *
-     * @param title The title of the current stream.
-     */
-    private void updateUI(String title) {
-        if (title.toLowerCase().contains("appsnack")) {
-            imageLogo.setImageResource(R.drawable.appsnack_large);
-        } else {
-            imageLogo.setImageResource(R.drawable.kodsnack_large);
+    private void updateStatusText(String status) {
+        if (numListeners != -1) {
+            status += "\n" + getString(R.string.num_listeners) + numListeners;
         }
+
+        showStatus(status);
     }
 
     /** CALLBACKS FROM SERVICE **/
@@ -100,7 +101,7 @@ public class ListenActivity extends Activity implements PlayerService.PlayerCall
     @Override
     public void onPrepared() {
         // Show text that show is live.
-        showStatus(R.string.live);
+        updateStatusText(getString(R.string.live));
     }
 
     @Override
@@ -111,7 +112,8 @@ public class ListenActivity extends Activity implements PlayerService.PlayerCall
 
     @Override
     public void onStopped() {
-        showStatus(R.string.offline);
+        numListeners = -1;
+        updateStatusText(getString(R.string.offline));
     }
 
     @Override
@@ -124,11 +126,33 @@ public class ListenActivity extends Activity implements PlayerService.PlayerCall
         if (t != null) {
             Log.e(TAG, t.toString());
         }
-        showStatus(R.string.offline);
+        updateStatusText(getString(R.string.offline));
     }
 
     @Override
-    public void updateTitle(String title) {
-        updateUI(title);
+    public void onJsonInfo(JSONObject info) {
+        try {
+            JSONObject icestats = info.getJSONObject("icestats");
+            if (icestats.has("source")) {
+                JSONObject source = icestats.getJSONObject("source");
+
+                // Try to find a title or fall back to the server name as title.
+                String title = source.has("title") ? source.getString("title")
+                                                   : source.getString("server_name");
+                numListeners = source.has("listeners") ? source.getInt("listeners") : -1;
+                updateStatusText(getString(R.string.live));
+
+                // Update UI according to JSON info.
+                if (title.toLowerCase().contains("appsnack")) {
+                    imageLogo.setImageResource(R.drawable.appsnack_large);
+                } else {
+                    imageLogo.setImageResource(R.drawable.kodsnack_large);
+                }
+            }
+        } catch (JSONException e) {
+            numListeners = -1;
+            updateStatusText(getString(R.string.offline));
+            Log.w(TAG, e.toString());
+        }
     }
 }

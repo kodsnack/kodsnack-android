@@ -6,6 +6,7 @@
     <string name="offline">Kodsnack offline</string>
     <string name="no_show">Ingen sändning för tillfället.</string>
     <string name="live">Live just nu!</string>
+    <string name="num_listeners">Antal lyssnare: </string>
 
     <!-- URL for the JSON status feed. -->
     <string name="kodsnack_status_url">http://live.kodsnack.se/feed.json</string>

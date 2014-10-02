@@ -304,20 +304,20 @@ public class PlayerService extends Service implements MediaPlayer.OnPreparedList
     @Override
     public void onResponse(JSONObject status) {
         Log.d(TAG, status.toString());
+        for (PlayerCallback callback : callbacks) {
+            callback.onJsonInfo(status);
+        }
 
         try {
             JSONObject icestats = status.getJSONObject("icestats");
             if (icestats.has("source")) {
                 JSONObject source = icestats.getJSONObject("source");
 
-                String url = source.getString("listenurl");
                 // Try to find a title or fall back to the server name as title.
                 streamTitle = source.has("title") ? source.getString("title")
                                                    : source.getString("server_name");
-                prepare(url);
-                for (PlayerCallback callback : callbacks) {
-                    callback.updateTitle(streamTitle);
-                }
+                // Prepare MediaPlayer with stream URL.
+                prepare(source.getString("listenurl"));
             }
         } catch (JSONException e) {
             Log.e(TAG, e.toString());
@@ -421,9 +421,9 @@ public class PlayerService extends Service implements MediaPlayer.OnPreparedList
         public void onError(Throwable t);
 
         /**
-         * Called when a new title is received for the stream.
+         * Called when a new JSON info object is received.
          */
-        public void updateTitle(String title);
+        public void onJsonInfo(JSONObject info);
     }
 
     /**
