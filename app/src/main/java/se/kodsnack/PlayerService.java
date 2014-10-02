@@ -188,6 +188,9 @@ public class PlayerService extends Service implements MediaPlayer.OnPreparedList
      */
     private void prepare(String url) {
         if (isRunning && !isPreparing && !isPrepared) {
+            for (PlayerCallback callback : callbacks) {
+                callback.onBuffering();
+            }
             isPreparing = true;
             try {
                 Log.d(TAG, "Preparing with: " + url);

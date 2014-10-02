@@ -103,6 +103,7 @@ public class PlayControlFragment extends Fragment implements PlayerService.Playe
     @Override
     public void onPrepared() {
         // Enable play button when prepared.
+        updateUI("");
         playPauseButton.setEnabled(true);
     }
 
@@ -124,6 +125,7 @@ public class PlayControlFragment extends Fragment implements PlayerService.Playe
 
     @Override
     public void onBuffering() {
+        updateUI(getString(R.string.buffering));
         playPauseButton.setPlaying(false);
     }
 

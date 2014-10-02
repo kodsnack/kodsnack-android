@@ -7,6 +7,7 @@
     <string name="no_show">Ingen sändning för tillfället.</string>
     <string name="live">Live just nu!</string>
     <string name="num_listeners">Antal lyssnare: </string>
+    <string name="buffering">Buffrar</string>
 
     <!-- URL for the JSON status feed. -->
     <string name="kodsnack_status_url">http://live.kodsnack.se/feed.json</string>
