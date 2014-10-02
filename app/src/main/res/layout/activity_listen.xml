@@ -33,6 +33,7 @@
         android:textSize="@dimen/std_headline"
         android:layout_below="@id/logo"
         android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"
         android:textStyle="normal"
         android:text="@string/offline"
         android:visibility="gone"
