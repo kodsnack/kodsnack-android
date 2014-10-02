@@ -14,7 +14,7 @@
         android:layout_height="fill_parent"
         android:src="@drawable/kodsnack" />
 
-    <TextView
+    <se.kodsnack.ui.FontTextView
         android:id="@+id/stream_title"
         android:gravity="center"
         android:layout_height="match_parent"
