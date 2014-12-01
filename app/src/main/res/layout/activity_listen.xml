@@ -6,38 +6,12 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".ListenActivity">
 
-    <ImageView
-        android:id="@+id/logo"
-        android:clickable="true"
-        android:contentDescription="@string/large_logo"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/kodsnack_large"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <ProgressBar
-        android:indeterminate="true"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/loading_progressbar"
-        android:layout_below="@id/logo"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content" />
-
-    <se.kodsnack.ui.FontTextView
-        android:id="@+id/offline_text"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:textSize="@dimen/std_headline"
-        android:layout_below="@id/logo"
-        android:layout_centerHorizontal="true"
-        android:gravity="center_horizontal"
-        android:textStyle="normal"
-        android:text="@string/offline"
-        android:visibility="gone"
-        tools:context="se.kodsnack.ui.FontTextView" />
+    <fragment
+        android:id="@+id/live_fragment"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:name="se.kodsnack.LiveFragment"
+        tools:layout="@layout/fragment_live" />
 
     <fragment
         android:id="@+id/playcontrolsfragment"
