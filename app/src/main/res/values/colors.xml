@@ -2,6 +2,7 @@
 <resources>
     <color name="background">#ff222222</color>
     <color name="dark_background">#1a1a1a</color>
+    <color name="play_controls_background">#1a1a1a</color>
     <color name="primary_foreground">#268bd2</color>
     <color name="primary_text">#aaafac</color>
     <color name="secondary_text">#555</color>

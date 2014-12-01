@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:orientation="horizontal"
-    android:background="@color/dark_background"
+    android:background="@color/play_controls_background"
     android:layout_height="@dimen/default_height"
     tools:context="se.kodsnack.PlayControlFragment">
 
@@ -23,6 +23,8 @@
         android:textSize="@dimen/stream_title_size" />
 
     <se.kodsnack.ui.PlayPauseButton
+        android:background="@null"
+        android:padding="8dp"
         android:id="@+id/play_pause_button"
         android:contentDescription="@string/play_pause_button_desc"
         android:layout_width="wrap_content"
