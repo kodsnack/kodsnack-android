@@ -44,6 +44,10 @@ public class PlayerService extends Service implements MediaPlayer.OnPreparedList
     private static final String ACTION_STOP = "se.kodsnack.STOP";
     private static final String ACTION_TOGGLE_PLAYING = "se.kodsnack.TOGGLE_PLAYING";
 
+    // Request for fetching current stream status.
+    final Request statusRequest = new JsonObjectRequest(getString(R.string.kodsnack_status_url),
+                                                        null, this, this);
+
     private MediaPlayer          mediaPlayer;         // MediaPlayer that plays the live stream.
     private boolean              isRunning;           // Whether this service is running or not.
     private boolean              isPreparing;         // Whether MediaPlayer is preparing a stream.
@@ -90,9 +94,6 @@ public class PlayerService extends Service implements MediaPlayer.OnPreparedList
             return START_STICKY;
         }
         isRunning = true;
-
-        // Start fetching JSON status.
-        fetchStatus();
 
         // Intent for opening the activity when clicking the notification.
         Intent open = new Intent(this, ListenActivity.class);
@@ -142,6 +143,7 @@ public class PlayerService extends Service implements MediaPlayer.OnPreparedList
 
     @Override
     public void onDestroy() {
+        super.onDestroy();
         if (mediaPlayer != null) {
             mediaPlayer.release();
             for (PlayerCallback callback : callbacks) {
@@ -169,12 +171,12 @@ public class PlayerService extends Service implements MediaPlayer.OnPreparedList
      * Fetches the JSON status periodically.
      */
     private void fetchStatus() {
-        final Request req = new JsonObjectRequest(getString(R.string.kodsnack_status_url),
-                                                  null, PlayerService.this, PlayerService.this);
         statusHandler.postDelayed(new Runnable() {
             public void run() {
-                requestQueue.add(req);
-                if (isRunning) {
+                // We only want to fetch again if we're running and either have some callbacks (i.e.
+                // an fragment/activity is active) or we're currently playing.
+                if (isRunning && (!callbacks.isEmpty() || mediaPlayer.isPlaying())) {
+                    requestQueue.add(statusRequest);
                     statusHandler.postDelayed(this, updateFrequency);
                 }
             }
@@ -277,9 +279,13 @@ public class PlayerService extends Service implements MediaPlayer.OnPreparedList
      * @param callback The callback to register.
      */
     public void registerPlayerCallback(PlayerCallback callback) {
-        callbacks.add(callback);
         // Shorter update period when we have someone interested in updates.
         updateFrequency = 3000;
+        // If this is the first callback, start fetching JSON again.
+        if (callbacks.isEmpty()) {
+            fetchStatus();
+        }
+        callbacks.add(callback);
         if (isPrepared) {
             callback.onPrepared();
         }
