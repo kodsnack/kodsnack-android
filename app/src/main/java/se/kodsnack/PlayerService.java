@@ -44,10 +44,6 @@ public class PlayerService extends Service implements MediaPlayer.OnPreparedList
     private static final String ACTION_STOP = "se.kodsnack.STOP";
     private static final String ACTION_TOGGLE_PLAYING = "se.kodsnack.TOGGLE_PLAYING";
 
-    // Request for fetching current stream status.
-    final Request statusRequest = new JsonObjectRequest(getString(R.string.kodsnack_status_url),
-                                                        null, this, this);
-
     private MediaPlayer          mediaPlayer;         // MediaPlayer that plays the live stream.
     private boolean              isRunning;           // Whether this service is running or not.
     private boolean              isPreparing;         // Whether MediaPlayer is preparing a stream.
@@ -61,6 +57,7 @@ public class PlayerService extends Service implements MediaPlayer.OnPreparedList
     private RemoteViews          remoteViews;         // Views in the notification.
     private Notification.Builder notificationBuilder; // Builder for the notification.
     private NotificationManager  notificationManager; // Manager for displaying notification.
+    private Request              statusRequest;       // Request for fetching current stream status.
 
     @Override
     public void onCreate() {
@@ -71,6 +68,8 @@ public class PlayerService extends Service implements MediaPlayer.OnPreparedList
         requestQueue        = Volley.newRequestQueue(this);
         updateFrequency     = 0; // Do first request immediately.
         notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        statusRequest       = new JsonObjectRequest(getString(R.string.kodsnack_status_url), null,
+                                                    this, this);
     }
 
     @Override
