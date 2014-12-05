@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Kodsnack.Notification.Title" parent="android:style/Widget.Material.TextView">
+        <item name="android:textColor">@color/text</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textSize">@dimen/std_subhead</item>
+        <item name="android:paddingBottom">@dimen/std_padding</item>
+    </style>
+
+    <style name="Kodsnack.Notification.Subtitle" parent="android:style/Widget.Material.TextView">
+        <item name="android:textColor">@color/secondary_text</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textSize">@dimen/regular_text_size</item>
+    </style>
+
+    <style name="Kodsnack.Notification.ImageButton" parent="android:style/Widget.Material.Light.ImageButton">
+        <item name="android:background">?android:attr/selectableItemBackground</item>
+        <item name="android:layout_height">@dimen/default_touch_target_size</item>
+        <item name="android:layout_width">@dimen/default_touch_target_size</item>
+        <item name="android:padding">@dimen/std_margin</item>
+        <item name="android:scaleType">fitCenter</item>
+    </style>
+</resources>

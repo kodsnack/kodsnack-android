@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary_text">#aaafac</color>
+
+    <!-- Colors from Material design spec. -->
+
+    <color name="text">#de000000</color>
+    <color name="secondary_text">#8a000000</color>
+    <color name="hint_text">#42000000</color>
+    <color name="divider">#1f000000</color>
+
+    <color name="text_inverted">#ffffffff</color>
+    <color name="secondary_text_inverted">#b3ffffff</color>
+    <color name="hint_text_inverted">#4dffffff</color>
+    <color name="divider_inverted">#1fffffff</color>
+</resources>

@@ -23,40 +23,27 @@
         android:orientation="vertical">
 
         <TextView
+            style="@style/Kodsnack.Notification.Title"
             android:id="@+id/title"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="@string/kodsnack"
-            android:textSize="@dimen/std_title" />
+            android:text="@string/kodsnack" />
 
         <TextView
+            style="@style/Kodsnack.Notification.Subtitle"
             android:id="@+id/subtitle"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:textSize="@dimen/std_subhead"/>
+            android:text="Test" />
 
         </LinearLayout>
 
     <ImageButton
+        style="@style/Kodsnack.Notification.ImageButton"
         android:contentDescription="@string/notification_playpause"
         android:id="@+id/play_pause_button"
-        android:background="?android:attr/selectableItemBackground"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="@dimen/std_margin"
-        android:padding="@dimen/std_margin"
-        android:layout_marginEnd="@dimen/std_margin"
-        android:layout_width="wrap_content"
-        android:src="@android:drawable/ic_media_pause"/>
+        android:src="@drawable/pause"/>
 
     <ImageButton
+        style="@style/Kodsnack.Notification.ImageButton"
         android:contentDescription="@string/notification_kill"
         android:id="@+id/kill_button"
-        android:background="?android:attr/selectableItemBackground"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="@dimen/std_margin"
-        android:padding="@dimen/std_margin"
-        android:layout_marginEnd="@dimen/std_margin"
-        android:layout_width="wrap_content"
-        android:src="@android:drawable/ic_menu_close_clear_cancel"/>
+        android:src="@drawable/clear"/>
 
 </LinearLayout>

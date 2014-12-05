@@ -4,6 +4,7 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
 
     <dimen name="std_margin">8dp</dimen>
+    <dimen name="std_padding">4dp</dimen>
 
     <dimen name="default_height">64dp</dimen>
 
@@ -14,5 +15,7 @@
     <dimen name="std_headline">24sp</dimen>
     <dimen name="std_title">20sp</dimen>
     <dimen name="std_subhead">16sp</dimen>
+    <dimen name="regular_text_size">14sp</dimen>
 
+    <dimen name="default_touch_target_size">48dp</dimen>
 </resources>

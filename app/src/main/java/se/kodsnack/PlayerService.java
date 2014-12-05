@@ -157,9 +157,9 @@ public class PlayerService extends Service implements MediaPlayer.OnPreparedList
      * and button drawables.
      */
     private void updateNotification() {
-        int res = android.R.drawable.ic_media_play;
+        int res = R.drawable.play;
         if (mediaPlayer.isPlaying()) {
-            res = android.R.drawable.ic_media_pause;
+            res = R.drawable.pause;
         }
         remoteViews.setImageViewResource(R.id.play_pause_button, res);
         remoteViews.setTextViewText(R.id.subtitle, streamTitle);
