@@ -79,6 +79,7 @@ public class PlayerService extends Service implements MediaPlayer.OnPreparedList
             String action = i.getAction();
             if (action.equals(ACTION_STOP)) {
                 stop();
+                notificationManager.cancel(NOTIFICATION_ID);
                 stopForeground(true);
                 stopSelf();
             } else if (action.equals(ACTION_TOGGLE_PLAYING)) {
