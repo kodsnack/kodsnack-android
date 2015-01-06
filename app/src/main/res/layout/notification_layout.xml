@@ -32,7 +32,7 @@
             android:id="@+id/subtitle"
             android:text="Test" />
 
-        </LinearLayout>
+    </LinearLayout>
 
     <ImageButton
         style="@style/Kodsnack.Notification.ImageButton"

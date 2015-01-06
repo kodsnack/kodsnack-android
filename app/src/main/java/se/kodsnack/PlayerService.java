@@ -188,6 +188,11 @@ public class PlayerService extends Service implements MediaPlayer.OnPreparedList
      *
      * @param url The URL to the stream.
      */
+    public void prepareMedia(String url) {
+        stop();
+        prepare(url);
+    }
+
     private void prepare(String url) {
         if (isRunning && !isPreparing && !isPrepared) {
             for (PlayerCallback callback : callbacks) {
@@ -330,7 +335,8 @@ public class PlayerService extends Service implements MediaPlayer.OnPreparedList
             }
         } catch (JSONException e) {
             Log.e(TAG, e.toString());
-            stop();
+            // TODO: We can't stop on error if we're not live streaming.
+//            stop();
             for (PlayerCallback callback : callbacks) {
                 callback.onError(e);
             }

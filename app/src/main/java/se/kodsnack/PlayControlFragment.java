@@ -131,9 +131,9 @@ public class PlayControlFragment extends Fragment implements PlayerService.Playe
 
     @Override
     public void onError(Throwable t) {
-        playPauseButton.setPlaying(false);
-        playPauseButton.setEnabled(false);
-        // TODO?
+//        playPauseButton.setPlaying(false);
+//        playPauseButton.setEnabled(false);
+        // TODO: Should probably change this to be a bit smarter.
     }
 
     @Override

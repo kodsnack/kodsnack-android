@@ -3,15 +3,24 @@
     android:background="@color/background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".ListenActivity">
 
-    <fragment
-        android:id="@+id/live_fragment"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:name="se.kodsnack.LiveFragment"
-        tools:layout="@layout/fragment_live" />
+    <android.support.v4.view.ViewPager
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_above="@+id/playcontrolsfragment"
+        android:layout_height="match_parent">
+
+        <android.support.v4.view.PagerTabStrip
+            android:id="@+id/pager_tab_strip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:textColor="#fff"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp" />
+    </android.support.v4.view.ViewPager>
 
     <fragment
         android:id="@+id/playcontrolsfragment"

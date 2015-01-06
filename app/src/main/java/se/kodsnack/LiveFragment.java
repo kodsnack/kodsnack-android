@@ -5,10 +5,9 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
-import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.os.IBinder;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,7 +21,7 @@ import org.json.JSONObject;
 
 
 /**
- * A simple {@link Fragment} subclass.
+ * A fragment for playing the live stream.
  */
 public class LiveFragment extends Fragment implements PlayerService.PlayerCallback {
     private static final String TAG = LiveFragment.class.getSimpleName();
@@ -175,5 +174,14 @@ public class LiveFragment extends Fragment implements PlayerService.PlayerCallba
             updateStatusText(getString(R.string.offline));
             Log.w(TAG, e.toString());
         }
+    }
+
+    /**
+     * Returns the title of this fragment.
+     *
+     * @return The title of this fragment.
+     */
+    public String getTitle() {
+        return "Live";
     }
 }
